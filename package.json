@@ -1,0 +1,77 @@
+{
+  "name": "pixel-mask-generator",
+  "version": "0.0.0-development",
+  "main": "src/index.js",
+  "description": "Procedural pixel generator",
+  "scripts": {
+    "build": "webpack",
+    "build.watch": "npm run build -- --watch",
+    "commit": "git-cz",
+    "coverage.check": "jest --coverage",
+    "coverage.report": "cat ./coverage/lcov.info | codecov",
+    "jest": "jest",
+    "jest.watch": "npm run test -- --watch",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "standard": "standard",
+    "validate": "npm run standard && npm run coverage.check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jojoee/pixel-mask-generator.git"
+  },
+  "keywords": [
+    "pixel",
+    "mask",
+    "generator"
+  ],
+  "license": "MIT",
+  "author": "Nathachai Thongniran <inid3a@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/jojoee/pixel-mask-generator/issues"
+  },
+  "homepage": "https://github.com/jojoee/pixel-mask-generator#readme",
+  "jest": {
+    "verbose": true,
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    }
+  },
+  "standard": {
+    "verbose": true,
+    "env": "jest",
+    "globals": [
+      "Handlebars",
+      "pmg"
+    ],
+    "ignore": [
+      "dist"
+    ]
+  },
+  "config": {
+    "ghooks": {
+      "pre-commit": "npm run validate"
+    },
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "hsl-to-rgb-for-reals": "^1.1.0",
+    "object-assign": "^4.1.1"
+  },
+  "devDependencies": {
+    "codecov": "^2.3.0",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
+    "ghooks": "^2.0.0",
+    "jest": "^21.1.0",
+    "semantic-release": "^8.0.3",
+    "standard": "^10.0.3",
+    "webpack": "^3.6.0"
+  }
+}

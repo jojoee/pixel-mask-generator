@@ -1,0 +1,25 @@
+# dependency
+node_modules
+bower_components
+
+# editor
+.vscode
+.idea
+
+# test
+coverage
+.nyc_output
+
+* log
+*.log
+
+# lock
+*.lock
+package-lock.json
+
+# dist
+dist/main.js
+dist/main.js.map
+
+# misc
+tmp

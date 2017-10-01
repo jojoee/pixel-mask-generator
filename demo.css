@@ -1,0 +1,87 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid orange;
+}
+
+.box {
+  margin-bottom: 24px;
+  border: 2px solid red;
+}
+
+.title {
+
+}
+
+.meta {
+
+}
+
+.data-list,
+.mask-list {
+
+}
+
+.meta .sprite-opt {
+  resize: none;
+  height: 92px;
+  padding: 6px;
+}
+
+.sprite {
+  margin: 4px;
+}
+
+.mask-key .color,
+.data,
+.mask {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ababab;
+  float: left;
+  text-align: center;
+  font-family: monospace;
+}
+
+.mask-key-0,
+.data-0,
+.mask-0 {
+
+}
+
+.mask-key-1 .color,
+.data-1,
+.mask-1 {
+  background-color: #c3ffb9;
+}
+
+.mask-key-2 .color,
+.data-2,
+.mask-2 {
+  background-color: #bfbfff;
+}
+
+.mask-key--1 .color,
+.data--1,
+.mask--1 {
+  background-color: #fdc1bf;
+}
+
+/* new line */
+.data-9,
+.mask-9 {
+  float: none;
+  text-indent: -9999px;
+}
+
+.mask-keys {
+  margin: 6px;
+}
+
+.mask-key {
+  clear: both;
+}

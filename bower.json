@@ -1,0 +1,22 @@
+{
+  "name": "pixel-mask-generator",
+  "description": "Procedural pixel generator",
+  "main": "dist/index.js",
+  "authors": [
+    "Nathachai Thongniran <inid3a@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "pixel",
+    "mask",
+    "generator"
+  ],
+  "homepage": "https://github.com/jojoee/pixel-mask-generator",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

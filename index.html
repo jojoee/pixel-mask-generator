@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>pixel-sprite-generator</title>
+<link rel="stylesheet" href="demo.css">
+</head>
+<body>
+<div id="app">
+</div>
+<script id="box-template" type="text/x-handlebars-template">
+  <h2 class="title">{{title}}</h2>
+  <div class="desc">{{desc}}</div>
+
+  <div class="meta">
+    <div class="mask-keys">
+      <div class="mask-key mask-key-0">
+        <span class="color">0</span> always empty
+      </div>
+
+      <div class="mask-key mask-key-1">
+        <span class="color">1</span> 50% body, 50% empty
+      </div>
+
+      <div class="mask-key mask-key-2">
+        <span class="color">2</span> 50% body, 50% border
+      </div>
+      
+      <div class="mask-key mask-key--1">
+        <span class="color">-1</span> always border
+      </div>
+    </div>
+
+    <div class="mask-list">
+      {{#each masks}}
+        <div class="mask mask-{{this}}">
+          {{this}}
+        </div>
+      {{/each}}
+    </div>
+
+    <div class="data-list">
+      {{#each data}}
+        <div class="data data-{{this}}">
+          {{this}}
+        </div>
+      {{/each}}
+    </div>
+
+    <textarea class="sprite-opt" disabled>{{spriteOpt}}</textarea>
+  </div>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="dist/main.js"></script>
+<script src="demo.js"></script>
+</body>
+</html>
