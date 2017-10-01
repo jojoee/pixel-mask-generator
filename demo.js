@@ -45,24 +45,7 @@ const robotMask = new pmg.Mask([
   1, 1, 0, 0
 ], 4, true, false)
 
-/*
-Test cases
-1. back and white
-2. color
-3. color (low saturation)
-4. color (high color variations)
-5. mirror: no
-6. mirror: mirror X
-7. mirror: mirror Y
-8. mirror: both
-9. scale: 1
-9. scale: 4
-9. scale: 10
-9. scale: 0.5
 
-edgeBrightness ?
-brightnessNoise ?
-*/
 const demos = [{
   title: 'ship',
   desc: 'test non-colored',
