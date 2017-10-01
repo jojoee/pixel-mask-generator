@@ -9,48 +9,58 @@
 Very inspired and copy some code from [zfedoran/pixel-sprite-generator](https://github.com/zfedoran/pixel-sprite-generator)
 
 [![pixel-mask-generator - screenshot](https://raw.githubusercontent.com/jojoee/pixel-mask-generator/master/screenshot.jpg "pixel-mask-generator - screenshot")](https://jojoee.github.io/pixel-mask-generator/)
+
+## Installation
+
+```
+// npm
+npm install pixel-mask-generator --save
+const pmg = require('pixel-mask-generator')
+
+// Bower
+bower install pixel-mask-generator --save
+<script src="bower_components/pixel-mask-generator/dist/index.js"></script>
+```
+
+## Example usage
+
+```javascript
+const mask = new pmg.Mask([
+  0, 0, 0, 0, 0, 0,
+  0, 0, 0, 0, 1, 1,
+  0, 0, 0, 0, 1, -1,
+  0, 0, 0, 1, 1, -1,
+  0, 0, 0, 1, 1, -1,
+  0, 0, 1, 1, 1, -1,
+  0, 1, 1, 1, 2, 2,
+  0, 1, 1, 1, 2, 2,
+  0, 1, 1, 1, 2, 2,
+  0, 1, 1, 1, 1, -1,
+  0, 0, 0, 1, 1, 1,
+  0, 0, 0, 0, 0, 0
+], 6, true, false)
+const sprite = new pmg.Sprite(mask)
+sprite.generate()
+
+// resize and append
+const resizedSpriteCanvasEle = pmg.util.resize(sprite.canvas, 10)
+const body = document.body
+body.appendChild(resizedSpriteCanvasEle)
+```
+
 ## Note
 - [x] Compatible with all browsers
-- [x] Unit test: setup
 - [ ] Unit test: add more tests
 - [ ] Automated scripts: browser compatibility test
 - [ ] Automated scripts: deploy to `gh-pages`
 - [ ] Branch: split code from `master` and `gh-pages`
 - [ ] Dependency: split `static/random.js` to another repository
 - [ ] Dependency: split `resize` function to another repository
-- [ ] Travis
-- [ ] Codecov
-- [ ] Npm
-- [ ] Semantic-release
-- [x] Bower
-- [ ] Mask (square): add Square mask
-- [ ] Mask (square): add Star mask
-- [ ] Mask (square): add Circle mask
-- [ ] Mask (square): add Flower mask
-- [ ] Mask (square): add Square mask
-- [ ] Mask (square): add Square mask
-- [ ] Mask (horizontal): add Saber mask
-- [ ] Mask (horizontal): add Light saber mask
-- [ ] Mask (vertical): add Monkey mask
-- [ ] Mask (vertical): add Penguin mask
-- [ ] Mask (vertical): add Panda mask
-- [ ] Mask (vertical): add Butterfly mask
-- [ ] Mask (vertical): add Batman logo mask
-- [ ] Mask (vertical): add Christmas tree mask
-- [ ] Mask (vertical): add Bear mask
-- [ ] Mask (vertical): add Tank mask
-- [ ] Mask (vertical): add Plane mask
-- [ ] Mask (vertical): add Rocket mask
-- [x] Demo: create [Demo page](https://jojoee.github.io/pixel-mask-generator/)
+- [ ] Mask: add more masks
 - [ ] Demo: update demo page
-- [ ] Coverage: increase coverage threshold 
+- [ ] Coverage: increase coverage threshold
 - [ ] Article: copy original article into the repo, in case the site and mirror are down
-- [ ] Doc: installation
-- [ ] Doc: Example usage
-- [ ] Doc: Contribute
-- [ ] Doc: Contribute for owner
 - [ ] Algorithm: change algorithm toward to the original, should be symmetrical
-- [ ] Refactor: remove unused code
 
 ## Contribute for owner
 
