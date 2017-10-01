@@ -45,6 +45,30 @@ const robotMask = new pmg.Mask([
   1, 1, 0, 0
 ], 4, true, false)
 
+const squareMask = new pmg.Mask([
+  0, 0, 0, 0,
+  0, 1, 1, 1,
+  0, 1, 1, 1,
+  0, 1, 1, 1
+], 4, true, true)
+
+const roundedMask = new pmg.Mask([
+  0, 0, 0, 0,
+  0, 0, 1, 1,
+  0, 1, 1, 1,
+  0, 1, 1, 1
+], 4, true, true)
+
+const saberMask = new pmg.Mask([
+  0, 1, 0,
+  1, -1, 0,
+  1, -1, 1,
+  1, -1, 1,
+  1, -1, 1,
+  1, -1, 1,
+  1, -1, 1,
+  0, -1, 0
+], 3, false, true)
 
 const demos = [{
   title: 'ship',
@@ -94,10 +118,22 @@ const demos = [{
   title: 'Robot',
   desc: 'test no mirrorY',
   mask: robotMask
+}, {
+  title: 'Square',
+  desc: 'test mirrorX, mirrorX (not work, no meaning)',
+  mask: squareMask
+}, {
+  title: 'Rounded',
+  desc: 'test roundedMask (not work, no meaning)',
+  mask: roundedMask
+}, {
+  title: 'Saber',
+  desc: 'test saberMask (not work, no meaning)',
+  mask: saberMask
 }]
 
 for (let i = 0; i < demos.length; i++) {
-  const nSprites = 30
+  const nSprites = 300
   const demo = demos[i]
   const boxEle = document.createElement('div')
   const spriteWrapperEle = document.createElement('div')
