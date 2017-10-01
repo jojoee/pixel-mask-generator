@@ -19,9 +19,9 @@ Very inspired and copy some code from [zfedoran/pixel-sprite-generator](https://
 - [ ] Dependency: split `resize` function to another repository
 - [ ] Travis
 - [ ] Codecov
-- [ ] Bower
 - [ ] Npm
 - [ ] Semantic-release
+- [x] Bower
 - [ ] Mask (square): add Square mask
 - [ ] Mask (square): add Star mask
 - [ ] Mask (square): add Circle mask
