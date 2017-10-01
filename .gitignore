@@ -18,8 +18,7 @@ coverage
 package-lock.json
 
 # dist
-dist/main.js
-dist/main.js.map
+dist/index.js.map
 
 # misc
 tmp
