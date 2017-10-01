@@ -8,6 +8,7 @@
 
 Very inspired and copy some code from [zfedoran/pixel-sprite-generator](https://github.com/zfedoran/pixel-sprite-generator)
 
+[![pixel-mask-generator - screenshot](https://raw.githubusercontent.com/jojoee/pixel-mask-generator/master/screenshot.jpg "pixel-mask-generator - screenshot")](https://jojoee.github.io/pixel-mask-generator/)
 ## Note
 - [x] Compatible with all browsers
 - [x] Unit test: setup
