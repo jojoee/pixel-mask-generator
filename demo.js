@@ -65,97 +65,68 @@ brightnessNoise ?
 */
 const demos = [{
   title: 'ship',
-  desc: '',
+  desc: 'test non-colored',
   mask: spaceshipMask,
   spriteOpt: {
     colored: false
   }
 }, {
   title: 'Colored ship',
-  desc: '',
-  mask: spaceshipMask,
-  spriteOpt: {}
+  desc: 'test colored',
+  mask: spaceshipMask
 }, {
-  title: 'Colored ship + low saturation',
-  desc: '',
+  title: 'Low saturation colored ship',
+  desc: 'test low saturation',
   mask: spaceshipMask,
   spriteOpt: {
     saturation: 0.1
   }
 }, {
-  title: 'Colored ship + many color per ship',
-  desc: '',
+  title: 'Many color ship',
+  desc: 'test colorVariations',
   mask: spaceshipMask,
   spriteOpt: {
     saturation: 1,
-    colorVariations: 0.9 // // change color
+    colorVariations: 0.9
   }
 }, {
-  title: 'Colored ship + brightnessNoise',
-  desc: '',
+  title: 'Noise ship',
+  desc: 'test brightnessNoise',
   mask: spaceshipMask,
   spriteOpt: {
-    brightnessNoise: 1,
-    edgeBrightness: 0
+    brightnessNoise: 1
   }
 }, {
-  title: 'Colored ship + edgeBrightness',
-  desc: '',
+  title: 'No-border ship',
+  desc: 'test edgeBrightness',
   mask: spaceshipMask,
   spriteOpt: {
     edgeBrightness: 1
   }
 }, {
-  title: 'ship with hight edgeBrightness',
-  desc: '',
-  mask: spaceshipMask,
-  spriteOpt: {
-    colored: true,
-    colorVariations: 0.9, // // change color
-    saturation: 0.8, // color effect
-
-    edgeBrightness: 0.3,
-    brightnessNoise: 0.3
-  }
+  title: 'Dragon',
+  desc: 'test no mirrorX, mirrorY',
+  mask: dragonMask
 }, {
-  title: 'Colored dragon sprites',
-  desc: '',
-  mask: dragonMask,
-  spriteOpt: {
-    colored: true,
-    colorVariations: 0.2,
-    saturation: 0.5,
-
-    edgeBrightness: 0.3,
-    brightnessNoise: 0.3
-  }
-}, {
-  title: 'Black & white robot sprites',
-  desc: '',
-  mask: robotMask,
-  spriteOpt: {
-    colored: false,
-    edgeBrightness: 0.3,
-    colorVariations: 0.2,
-    brightnessNoise: 0.3,
-    saturation: 0.5
-  }
+  title: 'Robot',
+  desc: 'test no mirrorY',
+  mask: robotMask
 }]
 
 for (let i = 0; i < demos.length; i++) {
-  const nSprites = 10
+  const nSprites = 30
   const demo = demos[i]
-  const mask = demo.mask
-  const spriteOpt = demo.spriteOpt
   const boxEle = document.createElement('div')
+  const spriteWrapperEle = document.createElement('div')
   const spritesEle = document.createElement('div')
   const lastSpriteEle = document.createElement('div')
-  boxEle.classList = 'box'
+  boxEle.classList = 'col-md-12 box'
+  spriteWrapperEle.classList = 'col-md-9 sprite-wrapper'
   spritesEle.classList = 'sprites'
   lastSpriteEle.classList = 'last-sprite'
 
   // generate
-  const sprite = new pmg.Sprite(mask, spriteOpt)
+  const sprite = new pmg.Sprite(demo.mask, demo.spriteOpt)
   let lastSprite = []
   for (let j = 0; j < nSprites; j++) {
     sprite.generate()
@@ -171,22 +142,25 @@ for (let i = 0; i < demos.length; i++) {
   }
 
   // template
-  const source = boxTemplateEle.innerHTML
-  const template = Handlebars.compile(source)
-  const context = {
+  const hdbSource = boxTemplateEle.innerHTML
+  const hdbTemplate = Handlebars.compile(hdbSource)
+  const nMaskBodyOrEmpty = pmg.util.count(demo.mask.data, pmg.maskKey.bodyOrEmpty)
+  const nMaskBodyOrBorder = pmg.util.count(demo.mask.data, pmg.maskKey.bodyOrBorder)
+  const nPossibility = Math.pow(2, nMaskBodyOrEmpty + nMaskBodyOrBorder)
+  const hdbContext = {
     title: demo.title,
     desc: demo.desc,
-    // masks: mtil.square2Array(demo.mask),
-    // masks: mtil.mask2DataArray(demo.mask),
-    masks: pmg.util.square2Array(demo.mask),
+    nPossibility: nPossibility.toLocaleString('en'),
+    masks: pmg.util.square2Array(
+      pmg.util.mask2Square(demo.mask, 8)
+    ),
     data: pmg.util.square2Array(lastSprite),
     spriteOpt: JSON.stringify(sprite.getOption(), null, 2)
   }
 
-  const html = template(context)
-  boxEle.innerHTML = html
-
-  boxEle.appendChild(lastSpriteEle)
-  boxEle.appendChild(spritesEle)
+  boxEle.innerHTML = hdbTemplate(hdbContext)
+  spriteWrapperEle.appendChild(lastSpriteEle)
+  spriteWrapperEle.appendChild(spritesEle)
+  boxEle.appendChild(spriteWrapperEle)
   appEle.appendChild(boxEle)
 }

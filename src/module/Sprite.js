@@ -2,10 +2,15 @@ const dataKey = require('./../key/dataKey')
 const maskKey = require('./../key/maskKey')
 const Square = require('./../module/Square')
 const random = require('./../static/random')
+const util = require('./../static/util')
 const objectAssign = require('object-assign')
 const hsl2Rgb = require('hsl-to-rgb-for-reals')
 
 class Sprite extends Square {
+  /**
+   * @param {Mask} mask
+   * @param {Option} [options={}]
+   */
   constructor (mask, options = {}) {
     const width = mask.width * (mask.mirrorX ? 2 : 1)
     const height = mask.height * (mask.mirrorY ? 2 : 1)
@@ -30,31 +35,6 @@ class Sprite extends Square {
     this.canvas.width = this.width
     this.canvas.height = this.height
     this.ctx = this.canvas.getContext('2d')
-  }
-
-  reset () {
-    this.data.fill(-1)
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-  }
-
-  /**
-   * @param {number} x
-   * @param {number} y
-   * @returns {number}
-   */
-  get (x, y) {
-    const idx = y * this.width + x
-    return this.data[idx]
-  }
-
-  /**
-   * @param {number} x
-   * @param {number} y
-   * @param {value}
-   */
-  set (x, y, value) {
-    const idx = y * this.width + x
-    this.data[idx] = value
   }
 
   /**
@@ -230,21 +210,17 @@ class Sprite extends Square {
   // ================================================================ public
 
   generate () {
-    this.reset()
+    // reset
+    this.data = util.mask2SquareData(this.mask, -1)
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
-    // apply mask to this.data
-    for (let j = 0; j < this.mask.height; j++) {
-      for (let i = 0; i < this.mask.width; i++) {
-        const idx = j * this.mask.width + i
-        this.set(i, j, this.mask.data[idx])
-      }
-    }
-
+    // generate
     this.generateSeed()
     if (this.mask.mirrorX) this.mirrorX()
     if (this.mask.mirrorY) this.mirrorY()
     this.generateEdge()
 
+    // render
     if (this.options.colored) {
       this.renderPixelData()
     } else {
@@ -257,13 +233,6 @@ class Sprite extends Square {
    */
   getOption () {
     return this.options
-  }
-
-  /**
-   * @returns {number[]}
-   */
-  getData () {
-    return this.data
   }
 }
 

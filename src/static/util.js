@@ -1,3 +1,5 @@
+const Square = require('./../module/Square')
+
 /**
  * Utility function that's used in this project
  */
@@ -52,27 +54,8 @@ class Util {
   }
 
   /**
-   * @todo improve algorithm
-   * @param {Square} obj
-   * @param {string} [newLine=\n]
-   * @return {string}
-   */
-  square2String (obj, newLine = '\n') {
-    let result = ''
-
-    for (let j = 0; j < obj.height; j++) {
-      for (let i = 0; i < obj.width; i++) {
-        const idx = obj.width * j + i
-        const val = obj.data[idx]
-        result += val
-      }
-      result += newLine
-    }
-
-    return result
-  }
-
-  /**
+   * Return "data" prop also adding "newLine" item
+   *
    * @todo improve algorithm
    * @param {Square} obj
    * @param {number} [newLine=9]
@@ -91,6 +74,53 @@ class Util {
     }
 
     return result
+  }
+
+  /**
+   * @param {Mask} mask
+   * @param {number} [val=-1]
+   * @returns {Square}
+   */
+  static mask2Square (mask, val = -1) {
+    const width = mask.width * (mask.mirrorX ? 2 : 1)
+    const height = mask.height * (mask.mirrorY ? 2 : 1)
+    const data = new Array(width * height)
+    const square = new Square(data, width)
+
+    // set default data value
+    square.data.fill(val)
+
+    // apply mask to this.data
+    for (let j = 0; j < mask.height; j++) {
+      for (let i = 0; i < mask.width; i++) {
+        const idx = j * mask.width + i
+        square.set(i, j, mask.data[idx])
+      }
+    }
+
+    return square
+  }
+
+  /**
+   * @param {Mask} mask
+   * @param {number} [val=-1]
+   * @returns {number[]}
+   */
+  static mask2SquareData (mask, val = -1) {
+    return this.mask2Square(mask, val).data
+  }
+
+  /**
+   * Count number of element in array
+   *
+   * @see https://stackoverflow.com/questions/6120931/how-to-count-the-number-of-certain-element-in-an-array
+   * @param {any[]} arr
+   * @param {any} ele
+   */
+  static count (arr, val) {
+    return arr.filter((x) => {
+      return x === val
+    }).length
   }
 }
 
