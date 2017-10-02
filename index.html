@@ -10,7 +10,7 @@
 </div>
 <script id="box-template" type="text/x-handlebars-template">
   <div class="col-md-3">
-    <h2 class="title">{{title}}</h2>
+    <h1 class="title" id="{{id}}">{{title}}</h1>
     <div class="desc">{{desc}}</div>
 
     <div class="meta widget">
@@ -43,17 +43,13 @@
 
     <div class="widget mask-list">
       {{#each masks}}
-        <div class="mask mask-{{this}}">
-          {{this}}
-        </div>
+        <div class="mask mask-{{this}}">{{this}}</div>
       {{/each}}
     </div>
 
     <div class="widget data-list">
       {{#each data}}
-        <div class="data data-{{this}}">
-          {{this}}
-        </div>
+        <div class="data data-{{this}}">{{this}}</div>
       {{/each}}
     </div>
   </div>

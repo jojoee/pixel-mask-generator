@@ -175,6 +175,7 @@ for (let i = 0; i < demos.length; i++) {
   const nMaskBodyOrBorder = pmg.util.count(demo.mask.data, pmg.maskKey.bodyOrBorder)
   const nPossibility = Math.pow(2, nMaskBodyOrEmpty + nMaskBodyOrBorder)
   const hdbContext = {
+    id: demo.title.replace(/ /g, '-').toLowerCase(),
     title: demo.title,
     desc: demo.desc,
     nPossibility: nPossibility.toLocaleString('en'),
