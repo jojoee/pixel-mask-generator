@@ -112,23 +112,23 @@ const demos = [{
   }
 }, {
   title: 'Dragon',
-  desc: 'test no mirrorX, mirrorY',
+  desc: 'test mirrorX, mirrorY',
   mask: dragonMask
 }, {
   title: 'Robot',
-  desc: 'test no mirrorY',
+  desc: 'test mirrorX',
   mask: robotMask
 }, {
   title: 'Square',
-  desc: 'test mirrorX, mirrorX (not work, no meaning)',
+  desc: 'test mirrorX, mirrorY',
   mask: squareMask
 }, {
   title: 'Rounded',
-  desc: 'test roundedMask (not work, no meaning)',
+  desc: 'test roundedMask',
   mask: roundedMask
 }, {
   title: 'Saber',
-  desc: 'test saberMask (not work, no meaning)',
+  desc: 'test mirrorY',
   mask: saberMask
 }]
 
