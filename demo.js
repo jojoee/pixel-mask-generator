@@ -115,21 +115,26 @@ const demos = [{
   desc: 'test mirrorX, mirrorY',
   mask: dragonMask
 }, {
+  title: 'Square',
+  desc: 'test mirrorX, mirrorY',
+  mask: squareMask
+}, {
   title: 'Robot',
   desc: 'test mirrorX',
   mask: robotMask
 }, {
-  title: 'Square',
-  desc: 'test mirrorX, mirrorY',
+  title: 'Saber',
+  desc: 'test mirrorY',
+  mask: saberMask
+}, {
+  title: 'Seed',
+  desc: 'test seed (all must be the same)',
+  seed: 'test-seedrandom',
   mask: squareMask
 }, {
   title: 'Rounded',
   desc: 'test roundedMask',
   mask: roundedMask
-}, {
-  title: 'Saber',
-  desc: 'test mirrorY',
-  mask: saberMask
 }]
 
 for (let i = 0; i < demos.length; i++) {
@@ -148,6 +153,9 @@ for (let i = 0; i < demos.length; i++) {
   const sprite = new pmg.Sprite(demo.mask, demo.spriteOpt)
   let lastSprite = []
   for (let j = 0; j < nSprites; j++) {
+    // hack, apply seed
+    if (demo.seed) Math.seedrandom(demo.seed)
+
     sprite.generate()
     /** @type {HTMLCanvasElement} */
     const resizedSpriteCanvasEle = pmg.util.resize(sprite.canvas, spriteScale)
