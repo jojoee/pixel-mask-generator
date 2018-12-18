@@ -8,7 +8,7 @@
 
 Very inspired and copy some code from [zfedoran/pixel-sprite-generator](https://github.com/zfedoran/pixel-sprite-generator)
 
-[![pixel-mask-generator - screenshot](https://raw.githubusercontent.com/jojoee/pixel-mask-generator/master/screenshot.jpg "pixel-mask-generator - screenshot")](https://jojoee.github.io/pixel-mask-generator/)
+[![pixel-mask-generator - screenshot](https://raw.githubusercontent.com/jojoee/pixel-mask-generator/master/screenshot.jpg "pixel-mask-generator - screenshot")](https://jojoee.github.io/pixel-mask-generator/) [![Greenkeeper badge](https://badges.greenkeeper.io/jojoee/pixel-mask-generator.svg)](https://greenkeeper.io/)
 
 ## Installation
 
