@@ -82,6 +82,11 @@ const demos = [{
   desc: 'test colored',
   mask: spaceshipMask
 }, {
+  title: 'Colored ship with seed',
+  desc: 'test colored with seed',
+  seed: 'test-colored-seedrandom',
+  mask: spaceshipMask
+}, {
   title: 'Low saturation colored ship',
   desc: 'test low saturation',
   mask: spaceshipMask,
